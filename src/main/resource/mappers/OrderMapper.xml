@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sise.dao.OrderMapper">
+
+    <insert id="insert" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+         insert into `order`(number,detail,`status`,uid,time,totalPrice) values (#{number},#{detail},#{status},#{uid},#{time},#{totalPrice})
+     </insert>
+
+    <select id="list" parameterType="java.lang.Integer" resultType="Order">
+        select * from `order` where uid=#{id} order by id desc
+    </select>
+
+    <select id="listA" parameterType="java.lang.Integer" resultType="Order">
+        select * from `order` where uid=#{id} and status in(1,2)  order by id desc
+    </select>
+
+    <select id="listB" parameterType="java.lang.Integer" resultType="Order">
+        select * from `order` where uid=#{id} and status=3  order by id desc
+    </select>
+
+    <select id="listC" parameterType="java.lang.Integer" resultType="Order">
+        select * from `order` where uid=#{id} and status=4  order by id desc
+    </select>
+
+    <delete id="del" parameterType="java.lang.Integer">
+        delete  from `order` where id=#{id}
+    </delete>
+    <select id="get" parameterType="java.lang.Integer" resultType="Order">
+        select * from `order` where id=#{id}
+    </select>
+
+    <update id="setStatus" parameterType="java.lang.Integer">
+    update `order` set
+	    status=2   where id=#{id}
+    </update>
+
+
+    <update id="takeStatus" parameterType="java.lang.Integer">
+    update `order` set
+	    status=3   where id=#{id}
+    </update>
+
+    <update id="commentStatus" parameterType="java.lang.Integer">
+    update `order` set
+	    status=4   where id=#{id}
+    </update>
+
+
+    <!--adminOrder拿到已完成的订单，倒序排列-->
+    <select id="listAll" resultType="Order">
+        select * from `order` where status in(3,4) order by id desc
+    </select>
+
+    <select id="countPrice" resultType="String">
+        select sum(totalPrice) from `order`
+    </select>
+
+
+    <!--fore/index统计order条数-->
+    <select id="orderCountA" resultType="int" parameterType="java.lang.Integer">
+        select count(id) from `order` where status=1 and uid=#{id}
+    </select>
+
+
+    <select id="orderCountB" resultType="int" parameterType="java.lang.Integer">
+        select count(id) from `order` where status=2 and uid=#{id}
+    </select>
+
+
+    <select id="orderCountC" resultType="int" parameterType="java.lang.Integer">
+        select count(id) from `order` where status=3 and uid=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sise.dao.Order_MsgMapper">
+
+    <update id="update" parameterType="Order_Msg">
+    update order_msg set
+	    number=#{number},oid=#{oid}  where id=#{id}
+    </update>
+
+    <update id="updateNumber" parameterType="Order_Msg">
+    update order_msg set
+	    number=#{number} where id=#{id}
+    </update>
+
+
+    <insert id="insert" parameterType="Order_Msg" useGeneratedKeys="true" keyProperty="id">
+	    insert into order_msg(pid,uid,oid,number)
+	    values(#{pid},#{uid},#{oid},#{number})
+	</insert>
+    <!--服务于myCart拿到oid为空的数据-->
+    <select id="list" resultType="Order_Msg" parameterType="java.lang.Integer">
+       select * from order_msg where uid=#{id} and oid=0
+   </select>
+
+
+    <select id="listByOid" resultType="Order_Msg" parameterType="java.lang.Integer">
+       select * from order_msg where oid=#{id}
+   </select>
+
+
+    <select id="get" resultType="Order_Msg" parameterType="java.lang.Integer">
+       select * from order_msg where id=#{id}
+   </select>
+
+    <delete id="del" parameterType="java.lang.Integer">
+        delete  from order_msg where id=#{id}
+    </delete>
+
+    <!--服务于staff-order根据pid拿到order_Msg集合且oid为空(即为真实订单)的数据-->
+    <select id="listByPid" resultType="Order_Msg" parameterType="java.lang.Integer">
+       select * from order_msg where pid=#{id} and oid!=0
+   </select>
+
+    <select id="listByCart" resultType="Order_Msg" parameterType="java.lang.Integer">
+       select * from order_msg where uid=#{id} and oid=0
+   </select>
+
+</mapper>
