@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.sise.dao.CanteenMapper">
     <select id="list" resultType="Canteen">
-       select * from canteen
+       select * from `canteen`
    </select>
 
     <select id="selectById" resultType="Canteen" parameterType="java.lang.Integer">
-       select * from canteen where id=#{id}
+       select * from `canteen` where id=#{id}
    </select>
 
     <insert id="insert" parameterType="Canteen" useGeneratedKeys="true" keyProperty="id">
-         insert into canteen(`name`,detail) values (#{name},#{detail})
+         insert into `canteen`(`name`,detail) values (#{name},#{detail})
      </insert>
 
     <update id="updateById" parameterType="Canteen">
-    update canteen set
+    update `canteen` set
 	    name=#{name},detail=#{detail},imgUrl=#{imgUrl}   where id=#{id}
     </update>
 
     <delete id="deleteById" parameterType="java.lang.Integer">
-        delete from canteen where id=#{id}
+        delete from `canteen` where id=#{id}
     </delete>
 
     <update id="setImgUrl" parameterType="Image">
-     update canteen set imgUrl=#{imgUrl} where id = #{id}
+     update `canteen` set imgUrl=#{imgUrl} where id = #{id}
     </update>
 </mapper>

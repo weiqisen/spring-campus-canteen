@@ -2,28 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.sise.dao.HotMapper">
     <select id="get" resultType="Hot" parameterType="java.lang.Integer">
-       select * from hot where id=#{id}
+       select * from `hot` where id=#{id}
    </select>
 
     <select id="getByUid" resultType="Hot" parameterType="hot">
-       select * from hot where uid=#{uid} and pid=#{pid}
+       select * from `hot` where uid=#{uid} and pid=#{pid}
    </select>
 
     <insert id="insert" parameterType="hot" useGeneratedKeys="true" keyProperty="id">
-        insert into hot(uid,pid,view) values(#{uid},#{pid},#{view})
+        insert into `hot`(uid,pid,view) values(#{uid},#{pid},#{view})
     </insert>
 
     <update id="updateView" parameterType="hot">
-        update hot set view=#{view} where uid=#{uid} and pid=#{pid}
+        update `hot` set view=#{view} where uid=#{uid} and pid=#{pid}
     </update>
 
     <update id="updateLike" parameterType="hot">
-        update hot set `like`=#{like} where uid=#{uid} and pid=#{pid}
+        update `hot` set `like`=#{like} where uid=#{uid} and pid=#{pid}
     </update>
 
 
     <insert id="insertLike" parameterType="hot" useGeneratedKeys="true" keyProperty="id">
-        insert into hot(uid,pid,like) values(#{uid},#{pid},#{like})
+        insert into `hot`(uid,pid,like) values(#{uid},#{pid},#{like})
     </insert>
 
 

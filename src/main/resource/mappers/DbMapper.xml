@@ -3,18 +3,18 @@
 <mapper namespace="cn.sise.dao.DbMapper">
 
     <insert id="setDb" parameterType="Db">
-        insert into db(time,url) values (#{time},#{url})
+        insert into `db`(time,url) values (#{time},#{url})
     </insert>
 
     <select id="list" resultType="Db">
-        select * from db  order by id desc
+        select * from `db`  order by id desc
     </select>
 
     <delete id="delDb" parameterType="java.lang.Integer">
-    delete from db where id=#{id}
+    delete from `db` where id=#{id}
     </delete>
 
     <select id="get" resultType="Db">
-        select * from db where id=#{id}
+        select * from `db` where id=#{id}
     </select>
 </mapper>

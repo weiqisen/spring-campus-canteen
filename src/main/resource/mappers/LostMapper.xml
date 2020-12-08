@@ -2,32 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.sise.dao.LostMapper">
     <select id="listAll" resultType="Lost">
-       select * from lost order by id desc
+       select * from `lost` order by id desc
    </select>
 
     <select id="get" resultType="Lost" parameterType="java.lang.Integer">
-       select * from lost where id=#{id}
+       select * from `lost` where id=#{id}
    </select>
 
     <insert id="insert" parameterType="Lost" useGeneratedKeys="true" keyProperty="id">
-         insert into lost(content,uid,time,imgUrl,kind) values (#{content},#{uid},#{time},#{imgUrl},#{kind})
+         insert into `lost`(content,uid,time,imgUrl,kind) values (#{content},#{uid},#{time},#{imgUrl},#{kind})
      </insert>
 
     <update id="update" parameterType="Lost">
-    update lost set
+    update `lost` set
 	    content=#{content},time=#{time},imgUrl=#{imgUrl},uid=#{uid},kind=#{kind}   where id=#{id}
     </update>
 
     <delete id="del" parameterType="java.lang.Integer">
-        delete from lost where id=#{id}
+        delete from `lost` where id=#{id}
     </delete>
 
     <update id="setImgUrl" parameterType="Image">
-     update lost set imgUrl=#{imgUrl} where id = #{id}
+     update `lost` set imgUrl=#{imgUrl} where id = #{id}
     </update>
 
     <select id="findMyLost" parameterType="java.lang.Integer" resultType="Lost">
-       select * from lost  where uid=#{id}
+       select * from `lost`  where uid=#{id}
    </select>
 
 </mapper>

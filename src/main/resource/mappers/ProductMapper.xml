@@ -3,46 +3,46 @@
 <mapper namespace="cn.sise.dao.ProductMapper">
 
     <select id="list" resultType="Product" >
-        select  * from product order by hot desc
+        select  * from `product` order by hot desc
     </select>
 
     <insert id="insert" parameterType="Product" useGeneratedKeys="true" keyProperty="id">
-         insert into product(name,price,detail,wid)values (#{name},#{price},#{detail},#{wid})
+         insert into `product`(name,price,detail,wid)values (#{name},#{price},#{detail},#{wid})
      </insert>
 
     <update id="setImgUrl" parameterType="Image">
-     update product set imgUrl=#{imgUrl} where id = #{id}
+     update `product` set imgUrl=#{imgUrl} where id = #{id}
     </update>
 
     <update id="update" parameterType="Product">
-        update product set imgUrl=#{imgUrl},name=#{name},price=#{price},detail=#{detail}where id=#{id}
+        update `product` set imgUrl=#{imgUrl},name=#{name},price=#{price},detail=#{detail}where id=#{id}
     </update>
 
     <delete id="delete" parameterType="java.lang.Integer">
-        delete from product where id=#{id}
+        delete from `product` where id=#{id}
     </delete>
 
     <select id="findByWid" resultType="Product" parameterType="java.lang.Integer">
-       select * from product where wid=#{id}
+       select * from `product` where wid=#{id}
    </select>
 
     <select id="get" resultType="Product" parameterType="java.lang.Integer">
-       select * from product where id=#{id}
+       select * from `product` where id=#{id}
    </select>
 
     <update id="lock" parameterType="java.lang.Integer">
-    update product set status=0 where id=#{id}
+    update `product` set status=0 where id=#{id}
    </update>
 
     <update id="unlock" parameterType="java.lang.Integer">
-    update product set status=1 where id=#{id}
+    update `product` set status=1 where id=#{id}
    </update>
 
     <update id="updateHot" parameterType="product">
-    update product set hot=#{hot} where id=#{id}
+    update `product` set hot=#{hot} where id=#{id}
    </update>
 
     <select id="findProductByName" parameterType="String" resultType="Product">
-		select * from product where name Like CONCAT('%',#{name},'%')
+		select * from `product` where name Like CONCAT('%',#{name},'%')
 	</select>
 </mapper>

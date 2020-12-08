@@ -8,20 +8,20 @@
      </insert>
 
     <select id="listAll" resultType="Comment">
-       select * from comment
+       select * from `comment`
    </select>
 
     <update id="setPass" parameterType="java.lang.Integer">
-    update comment set
+    update `comment` set
 	    status=1   where id=#{id}
     </update>
 
 
     <select id="listByPass" resultType="Comment">
-       select * from comment where status=1 order by id desc
+       select * from `comment` where status=1 order by id desc
    </select>
 
     <select id="listByWaitPass" resultType="Comment">
-       select * from comment where status=0
+       select * from `comment` where status=0
    </select>
 </mapper>

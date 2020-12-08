@@ -3,63 +3,63 @@
 <mapper namespace="cn.sise.dao.UserMapper">
 
     <select id="findUserByNumber" parameterType="String" resultType="user">
-		select * from user where number = #{number}
+		select * from `user` where number = #{number}
 	</select>
 
 
     <insert id="addUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-	    insert into user(name,password,number,phone,role,imgUrl,sex,nickName)
+	    insert into `user`(name,password,number,phone,role,imgUrl,sex,nickName)
 	    values(#{name},#{password},#{number},#{phone},#{role},#{imgUrl},#{sex},#{nickName})
 	</insert>
 
 
     <update id="updateUser" parameterType="user">
-	    update user set
+	    update `user` set
 	    name=#{name},password=#{password},number=#{number},phone=#{phone},role=#{role},sex=#{sex},nickName=#{nickName},imgUrl=#{imgUrl}
 	    where id=#{id}
 	</update>
 
     <update id="updateUserWid" parameterType="user">
-		update user set wid=#{wid} where id=#{id}
+		update `user` set wid=#{wid} where id=#{id}
 	</update>
 
 
     <delete id="deleteUser" parameterType="Integer">
-	    delete  from user where id=#{id}
+	    delete  from `user` where id=#{id}
 	</delete>
 
     <select id="findAllUser" resultType="User">
-		select * from user
+		select * from `user`
 	</select>
 
     <select id="listUserA" resultType="User">
-		select * from user where role=1
+		select * from `user` where role=1
 	</select>
 
 
     <select id="listUserB" resultType="User">
-		select * from user where role in (2,3,4)
+		select * from `user` where role in (2,3,4)
 	</select>
 
     <select id="get" parameterType="java.lang.Integer" resultType="User">
-		select * from user where id=#{id}
+		select * from `user` where id=#{id}
 	</select>
 
     <select id="getByWid" parameterType="java.lang.Integer" resultType="User">
-		select * from user where wid=#{wid}
+		select * from `user` where wid=#{wid}
 	</select>
 
     <update id="setImgUrl" parameterType="Image">
-     update user set imgUrl=#{imgUrl} where id = #{id}
+     update `user` set imgUrl=#{imgUrl} where id = #{id}
     </update>
 
 
     <update id="setWidNull" parameterType="java.lang.Integer">
-		update user set wid=null where id=#{id}
+		update `user` set wid=null where id=#{id}
 	</update>
 
 
     <select id="findByName" parameterType="String" resultType="User">
-		select * from user where name Like CONCAT('%',#{name},'%')
+		select * from `user` where name Like CONCAT('%',#{name},'%')
 	</select>
 </mapper>

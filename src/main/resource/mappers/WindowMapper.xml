@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.sise.dao.WindowMapper">
-    <select id="list" resultType="Window" parameterType="java.lang.Integer">
-       select * from window
+    <select id="list" resultType="Window" >
+       select * from `window`
    </select>
 
     <select id="selectById" resultType="Window" parameterType="java.lang.Integer">
-       select * from window where id=#{id}
+       select * from `window` where id=#{id}
    </select>
 
     <insert id="insert" parameterType="Window" useGeneratedKeys="true" keyProperty="id">
-         insert into window(name,imgUrl,detail,tid) values (#{name},#{imgUrl},#{detail},#{tid})
+         insert into `window`(name,imgUrl,detail,tid) values (#{name},#{imgUrl},#{detail},#{tid})
      </insert>
 
     <update id="updateById" parameterType="Window">
-    update window set
+    update `window` set
 	    name=#{name},detail=#{detail},imgUrl=#{imgUrl}   where id=#{id}
     </update>
 
     <delete id="deleteById" parameterType="java.lang.Integer">
-        delete from window where id=#{id}
+        delete from `window` where id=#{id}
     </delete>
     <select id="findByTid" resultType="Window" parameterType="java.lang.Integer">
-       select * from window where tid=#{tid}
+       select * from `window` where tid=#{tid}
    </select>
 
     <update id="setImgUrl" parameterType="Image">
@@ -30,10 +30,10 @@
     </update>
 
     <update id="setOpen" parameterType="java.lang.Integer">
-     update window set status=1 where id = #{id}
+     update `window` set status=1 where id = #{id}
     </update>
 
     <update id="setClose" parameterType="java.lang.Integer">
-     update window set status=0 where id = #{id}
+     update `window` set status=0 where id = #{id}
     </update>
 </mapper>
